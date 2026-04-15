@@ -61,6 +61,7 @@
       padding: 15px 25px;
       border-radius: 30px;
       cursor: pointer;
+      font-size: 16px;
     }
 
     .hidden-message {
@@ -108,11 +109,12 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ÁUDIO CORRIGIDO -->
+  <!-- AUDIO (corrigido) -->
   <audio id="musica" loop>
-    <source src="musica.mp4" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
   <div class="container">
@@ -122,12 +124,12 @@
       fiz isso pra vc amor, vc é a melhor coisa q ja aconteceu na minha vida. Te amo, e quero estar ao seu lado sempre, sempre <3
     </p>
 
-    <!-- CONFERE SE O NOME DO GIF É ESSE -->
-    <img src="gif_sem_ui.gif" class="gif">
+    <!-- GIF (corrigido) -->
+    <img src="gif_sem_ui.gif" class="gif" alt="gif">
 
     <div class="timer" id="contador"></div>
 
-    <button onclick="mostrarMensagem()">Clica aqui, amor</button>
+    <button onclick="iniciar()">Clica aqui, amor</button>
 
     <p class="hidden-message" id="mensagem">
       Vc é o meu mundo amor. Eu te amo mais do q qualquer coisa❤️
@@ -141,12 +143,12 @@
   </div>
 
   <script>
-    function mostrarMensagem() {
+    function iniciar() {
       document.getElementById('mensagem').style.display = 'block';
 
       // TOCAR MÚSICA (corrigido)
       const musica = document.getElementById("musica");
-      musica.play();
+      musica.play().catch(() => {});
 
       setTimeout(() => {
         mostrarFinal();
@@ -155,9 +157,6 @@
 
     function mostrarFinal() {
       document.getElementById('final').style.display = 'flex';
-
-      const musica = document.getElementById("musica");
-      musica.volume = 40;
     }
 
     const dataInicio = new Date("2026-04-07");
