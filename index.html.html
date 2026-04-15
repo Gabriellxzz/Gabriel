@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ana Júlia ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.8em;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    .gif {
+      margin-top: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+
+    .timer {
+      margin-top: 25px;
+      font-size: 1.2em;
+      background: rgba(255,255,255,0.2);
+      padding: 10px;
+      border-radius: 15px;
+      display: inline-block;
+    }
+
+    /* TELA FINAL */
+    .final {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      font-size: 3em;
+      letter-spacing: 10px;
+    }
+
+    .palavra {
+      opacity: 0;
+      transform: scale(0.5);
+      animation: aparecer 1s forwards;
+    }
+
+    @keyframes aparecer {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="musica" autoplay loop>
+    <source src="musica.mp4" type="audio/mp4">
+  </audio>
+
+  <div class="container">
+    <h1>Ana Júlia 💖</h1>
+
+    <p>
+      fiz isso pra vc amor, vc é a melhor coisa q ja aconteceu na minha vida. Te amo, e quero estar ao seu lado sempre, sempre <3
+    </p>
+
+    <img src="gif_sem_ui.gif" class="gif">
+
+    <div class="timer" id="contador"></div>
+
+    <button onclick="mostrarMensagem()">Clica aqui, amor</button>
+
+    <p class="hidden-message" id="mensagem">
+      Vc é o meu mundo amor. Eu te amo mais do q qualquer coisa❤️
+    </p>
+  </div>
+
+  <!-- TELA FINAL -->
+  <div class="final" id="final">
+    <div class="palavra" style="animation-delay: 0s">EU</div>
+    <div class="palavra" style="animation-delay: 1s">TE</div>
+    <div class="palavra" style="animation-delay: 2s">AMO</div>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById('mensagem').style.display = 'block';
+
+      setTimeout(() => {
+        mostrarFinal();
+      }, 3000);
+    }
+
+    function mostrarFinal() {
+      document.getElementById('final').style.display = 'flex';
+
+      // aumenta volume
+      const musica = document.getElementById("musica");
+      musica.volume = 1;
+    }
+
+    const dataInicio = new Date("2026-04-07");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+
+      document.getElementById("contador").innerText =
+        `Estamos juntos há ${dias} dias, ${horas}h ${minutos}m ❤️`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    function criarCoracao() {
+      const coracao = document.createElement("div");
+      coracao.classList.add("heart");
+      coracao.innerText = "❤️";
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+      document.body.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+
+</body>
+</html>
