@@ -32,7 +32,7 @@
       line-height: 1.6;
     }
 
-    .gif {
+    video {
       margin-top: 20px;
       border-radius: 20px;
       width: 90%;
@@ -112,20 +112,22 @@
 
 <body>
 
-  <!-- AUDIO (corrigido) -->
+  <!-- MÚSICA -->
   <audio id="musica" loop>
-    <source src="musica.mp4" type="audio/mp4">
+    <source src="musica.mp4.mp4" type="audio/mp4">
   </audio>
 
   <div class="container">
     <h1>Ana Júlia 💖</h1>
 
     <p>
-      fiz isso pra vc amor, vc é a melhor coisa q ja aconteceu na minha vida. Te amo, e quero estar ao seu lado sempre, sempre <3
+      fiz isso pra vc amor, vc é a melhor coisa q ja aconteceu na minha vida. Te amo, e quero estar ao seu lado sempre ❤️
     </p>
 
-    <!-- GIF (corrigido) -->
-    <img src="gif_sem_ui.gif" class="gif" alt="gif">
+    <!-- VÍDEO (SEU "GIF") -->
+    <video autoplay loop muted playsinline>
+      <source src="gif_sem_ui.gif.mp4" type="video/mp4">
+    </video>
 
     <div class="timer" id="contador"></div>
 
@@ -146,7 +148,6 @@
     function iniciar() {
       document.getElementById('mensagem').style.display = 'block';
 
-      // TOCAR MÚSICA (corrigido)
       const musica = document.getElementById("musica");
       musica.play().catch(() => {});
 
