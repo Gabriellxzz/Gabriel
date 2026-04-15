@@ -78,7 +78,6 @@
       display: inline-block;
     }
 
-    /* TELA FINAL */
     .final {
       position: fixed;
       top: 0;
@@ -111,8 +110,9 @@
 </head>
 <body>
 
-  <audio id="musica" autoplay loop>
-    <source src="musica.mp4" type="audio/mp4">
+  <!-- ÁUDIO CORRIGIDO -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
   <div class="container">
@@ -122,6 +122,7 @@
       fiz isso pra vc amor, vc é a melhor coisa q ja aconteceu na minha vida. Te amo, e quero estar ao seu lado sempre, sempre <3
     </p>
 
+    <!-- CONFERE SE O NOME DO GIF É ESSE -->
     <img src="gif_sem_ui.gif" class="gif">
 
     <div class="timer" id="contador"></div>
@@ -133,7 +134,6 @@
     </p>
   </div>
 
-  <!-- TELA FINAL -->
   <div class="final" id="final">
     <div class="palavra" style="animation-delay: 0s">EU</div>
     <div class="palavra" style="animation-delay: 1s">TE</div>
@@ -144,6 +144,10 @@
     function mostrarMensagem() {
       document.getElementById('mensagem').style.display = 'block';
 
+      // TOCAR MÚSICA (corrigido)
+      const musica = document.getElementById("musica");
+      musica.play();
+
       setTimeout(() => {
         mostrarFinal();
       }, 3000);
@@ -152,7 +156,6 @@
     function mostrarFinal() {
       document.getElementById('final').style.display = 'flex';
 
-      // aumenta volume
       const musica = document.getElementById("musica");
       musica.volume = 1;
     }
